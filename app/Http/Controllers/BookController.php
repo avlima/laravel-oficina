@@ -76,7 +76,10 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        $book = new \App\Book;
+        $book = $book->find($id);
+
+        return view('book.edit', ['book' => $book]);
     }
 
     /**
@@ -88,7 +91,10 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $book = new \App\Book;
+        $book = $book->find($id)->update($request->all());
+
+        return redirect()->route('book.index');
     }
 
     /**
@@ -99,6 +105,9 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $book = new \App\Book;
+        $book->find($id)->delete();
+
+        return redirect('books');
     }
 }

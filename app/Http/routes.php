@@ -16,6 +16,9 @@ Route::get('/', function () {
 });
 
 Route::get('/index', 'IndexController@index');
-Route::get('/books', 'BookController@index');
+Route::get('/books', ['as'=>'book.index', 'uses'=> 'BookController@index']);
 Route::get('/books/create', 'BookController@create');
-Route::post('/books/store', 'BookController@store');
+Route::post('/books/store', ['as'=>'book.store', 'uses'=> 'BookController@store']);
+Route::get('/books/delete/{id}', 'BookController@destroy');
+Route::get('/books/edit/{id}', 'BookController@edit');
+Route::post('/books/update/{id}', ['as'=>'book.update', 'uses'=> 'BookController@update']);

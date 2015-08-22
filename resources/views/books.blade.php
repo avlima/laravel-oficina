@@ -7,11 +7,9 @@
 <body>
 <h1>Books</h1>
 
-<a href="/books/create">Create new book</a>
-<br>
 <ul>
     @foreach($books as $book)
-        <li>{{$book->title}} - <a href="/books/delete/{{$book->id}}">Delete</a> - <a href="/books/edit/{{$book->id}}">Edit</a></li>
+        <li>{{$book->title}}</li>
     @endforeach
 </ul>
 </body>
