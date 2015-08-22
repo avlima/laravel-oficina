@@ -18,7 +18,7 @@ class BookController extends Controller
     {
         $books = \App\Book::all();
 
-        return view('books', ['books' => $books]);
+        return view('book.books', ['books' => $books]);
     }
 
     /**
@@ -28,7 +28,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('book.create');
     }
 
     /**
@@ -39,7 +39,22 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $book = new \App\Book();
+
+        //usando request
+        $data = $request->all();
+
+        //usando metodo create (obs: é necessario ter o metodo filabo)
+        /*$data = ['title' => 'Game of Thrones', 'description' => 'Livro massa pra caramba'];*/
+
+        $book->create($data);
+
+        //usando o save
+        /*$book->title = 'Alto da barca do Céu';
+        $book->description = 'Descrição de livro';
+        $book->save();*/
+
+        return redirect('books');
     }
 
     /**
