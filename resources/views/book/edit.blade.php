@@ -2,20 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create a new book</title>
+    <title>Edit book</title>
 </head>
 <body>
 
-<h1>Edit: {{$book->title}}</h1>
+<h1>Edit: {{ $book->title }}</h1>
 
-<form method="post" action="/books/update/{{$book->id}}">
-    {!! Form::model($book, ['route'=>['book.update', $book->id]]) !!}
-
+<form method="post" action="/books/update/{{ $book->id }}">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
     @include('book._form')
 
     <input type="submit" value="Update book">
 
-    {!! Form::close() !!}
+</form>
 
 </body>
 </html>
