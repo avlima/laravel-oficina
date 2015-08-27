@@ -8,12 +8,12 @@
 
 <h1>Create a new book</h1>
 
-{!! Form::open(['route'=>'book.store']) !!}
+<form id="frm" method="POST" action="/books/store">
 
-@include('book._form')
+    @include('book._form')
 
-<input type="submit" value="Create book">
-{!! Form::close() !!}
+    <input type="submit" value="Create book">
+</form>
 
 </body>
 </html>

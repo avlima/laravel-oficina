@@ -1,6 +1,10 @@
-{!! Form::label('title','Title')  !!}
-{!! Form::text('title', null, ['class'=>'form-control']) !!}
+<div>
+    <label for="title">Title</label>
+    <input name="title" id="title" type="text" value="{{ $book->title or "" }}" />
+</div>
 <br>
-{!! Form::label('description','Description')  !!}
-{!! Form::textarea('description', null, ['class'=>'form-control']) !!}
+<div>
+    <label for="description">Description</label>
+    <textarea id="description" name="description" form="frm">{{ $book->description or "" }}</textarea>
+</div>
 <br>

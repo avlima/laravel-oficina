@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
 class BookController extends Controller
 {
@@ -14,9 +14,9 @@ class BookController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function getIndex()
     {
-        $books = \App\Book::all();
+        $books = Book::all();
 
         return view('book.books', ['books' => $books]);
     }
@@ -26,9 +26,9 @@ class BookController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function getCreate()
     {
-        return view('book.create');
+        return view('book.create', ['book' => new Book()]);
     }
 
     /**
@@ -37,17 +37,15 @@ class BookController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function postStore(Request $request)
     {
-        $book = new \App\Book();
-
         //usando request
         $data = $request->all();
 
         //usando metodo create (obs: é necessario ter o metodo filabo)
         /*$data = ['title' => 'Game of Thrones', 'description' => 'Livro massa pra caramba'];*/
 
-        $book->create($data);
+        Book::create($data);
 
         //usando o save
         /*$book->title = 'Alto da barca do Céu';
@@ -63,7 +61,7 @@ class BookController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function getShow($id)
     {
         //
     }
@@ -74,10 +72,9 @@ class BookController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function getEdit($id)
     {
-        $book = new \App\Book;
-        $book = $book->find($id);
+        $book = Book::find($id);
 
         return view('book.edit', ['book' => $book]);
     }
@@ -89,12 +86,11 @@ class BookController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function postUpdate(Request $request, $id)
     {
-        $book = new \App\Book;
-        $book = $book->find($id)->update($request->all());
+        Book::find($id)->update($request->all());
 
-        return redirect()->route('book.index');
+        return redirect('books');
     }
 
     /**
@@ -103,10 +99,9 @@ class BookController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function getDelete($id)
     {
-        $book = new \App\Book;
-        $book->find($id)->delete();
+        Book::destroy($id);
 
         return redirect('books');
     }
