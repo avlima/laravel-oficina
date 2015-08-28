@@ -35,7 +35,6 @@
 <h1>Edit: {{ $book->title }}</h1>
 
 <form method="post" action="/books/update/{{ $book->id }}">
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
     @include('book._form')
 
     <input type="submit" value="Update book">
