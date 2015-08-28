@@ -15,12 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/index', 'IndexController@index');
-//Route::get('/books', ['as'=>'book.index', 'uses'=> 'BookController@index']);
-//Route::get('/books/create', 'BookController@create');
-//Route::post('/books/store', ['as'=>'book.store', 'uses'=> 'BookController@store']);
-//Route::get('/books/delete/{id}', 'BookController@destroy');
-//Route::get('/books/edit/{id}', 'BookController@edit');
-//Route::post('/books/update/{id}', ['as'=>'book.update', 'uses'=> 'BookController@update']);
+Route::get('/index/{name}', 'IndexController@index');
 
 Route::controller('books', 'BookController');

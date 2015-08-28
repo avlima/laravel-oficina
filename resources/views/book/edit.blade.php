@@ -3,6 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit book</title>
+
+    <style>
+        form    {
+            margin:auto;
+            font-family: Tahoma, Geneva, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            color: #09C;
+            padding:10px;
+        }
+
+        input    {
+            width:375px;
+            display:block;
+            border: 1px solid #999;
+            height: 25px;
+        }
+
+        textarea    {
+            width:375px;
+            display:block;
+            border: 1px solid #999;
+            height: 125px;
+        }
+    </style>
+
 </head>
 <body>
 
